@@ -2,7 +2,8 @@
   --bg: #ffffff;
   --text: #1c2430;
   --muted: #5b6675;
-  --accent: #1f5fa8;
+  --accent: #1a8a00;
+  --neon: #6ee35a;
   --rule: #e3e7ec;
   --chip: #f1f4f8;
 
@@ -19,7 +20,7 @@
     --bg: #12161c;
     --text: #e6e9ee;
     --muted: #9aa4b2;
-    --accent: #7fb2ee;
+    --accent: #7ee86c;
     --rule: #2a313b;
     --chip: #1d232c;
   }
@@ -50,8 +51,7 @@ a:hover {
 
 .header {
   position: relative;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--rule);
+  padding-bottom: 8px;
 }
 
 h1 {
@@ -70,13 +70,14 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 4px 20px;
-  margin: 0;
+  margin: 12px 0 0;
   padding: 0;
   list-style: none;
 }
 
 .print {
   position: absolute;
+  display: inline-block;
   top: 0;
   right: 0;
   padding: 6px 12px;
@@ -90,6 +91,7 @@ h1 {
 }
 .print:hover {
   border-color: var(--accent);
+  text-decoration: none;
 }
 
 .section {
@@ -98,6 +100,8 @@ h1 {
 
 h2 {
   margin: 0 0 12px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--neon);
   font-size: 0.85rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -135,24 +139,44 @@ h3 {
   white-space: nowrap;
 }
 
-.entry ul {
+.entry ul,
+.list {
   margin: 8px 0 0;
   padding-left: 20px;
 }
 
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0;
+.roles {
+  margin: 4px 0 0;
   padding: 0;
   list-style: none;
 }
-.skills li {
-  padding: 4px 10px;
-  background: var(--chip);
-  border-radius: 999px;
-  font-size: 0.95rem;
+
+.group {
+  margin-top: 16px;
+}
+
+h4 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.group ul {
+  margin-top: 6px;
+}
+
+.skills {
+  margin: 0;
+}
+.skills div + div {
+  margin-top: 4px;
+}
+.skills dt {
+  display: inline;
+  font-weight: 600;
+}
+.skills dd {
+  display: inline;
+  margin: 0;
 }
 
 @media (max-width: 600px) {
@@ -178,11 +202,5 @@ h3 {
   }
   .print {
     display: none;
-  }
-  .skills li {
-    padding: 0;
-  }
-  .skills li + li::before {
-    content: '· ';
   }
 }

@@ -10,13 +10,13 @@ function Section({ title, children }) {
 }
 
 function App() {
-  const { name, title, summary, links, experience, education, skills } = resume
+  const { name, title, pdf, summary, links, experience, education, skills, volunteering } = resume
 
   return (
     <main className="resume">
       <header className="header">
         <h1>{name}</h1>
-        <p className="title">{title}</p>
+        {title && <p className="title">{title}</p>}
         <ul className="links">
           {links.map((link) => (
             <li key={link.label}>
@@ -26,9 +26,9 @@ function App() {
             </li>
           ))}
         </ul>
-        <button className="print" onClick={() => window.print()}>
+        <a className="print" href={pdf} download>
           Download PDF
-        </button>
+        </a>
       </header>
 
       {summary && (
@@ -41,45 +41,80 @@ function App() {
         {experience.map((job) => (
           <article className="entry" key={`${job.company}-${job.start}`}>
             <div className="entry-head">
-              <h3>
-                {job.role} <span className="muted">· {job.company}</span>
-              </h3>
+              <h3>{job.company}</h3>
               <span className="dates">
                 {job.start} – {job.end}
               </span>
             </div>
-            {job.location && <p className="muted">{job.location}</p>}
-            <ul>
-              {job.highlights.map((item) => (
-                <li key={item}>{item}</li>
+            <ul className="roles">
+              {job.roles.map((role) => (
+                <li key={role.title}>
+                  {role.title}{' '}
+                  <span className="dates">
+                    {role.start} – {role.end}
+                  </span>
+                </li>
               ))}
             </ul>
+            {job.groups.map((group) => (
+              <div className="group" key={group.heading}>
+                <h4>{group.heading}</h4>
+                <ul>
+                  {group.highlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </article>
         ))}
+      </Section>
+
+      <Section title="Skills">
+        <dl className="skills">
+          {skills.map((skill) => (
+            <div key={skill.category}>
+              <dt>{skill.category}:</dt> <dd>{skill.items}</dd>
+            </div>
+          ))}
+        </dl>
       </Section>
 
       <Section title="Education">
         {education.map((ed) => (
           <article className="entry" key={ed.school}>
             <div className="entry-head">
-              <h3>
-                {ed.degree} <span className="muted">· {ed.school}</span>
-              </h3>
-              <span className="dates">
-                {ed.start} – {ed.end}
-              </span>
+              <h3>{ed.school}</h3>
+              <span className="dates">{ed.date}</span>
             </div>
+            <p>
+              {ed.degree}
+              {ed.honors && (
+                <>
+                  , <em>{ed.honors}</em>
+                </>
+              )}
+            </p>
+            {ed.highlights && (
+              <ul>
+                {ed.highlights.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            )}
           </article>
         ))}
       </Section>
 
-      <Section title="Skills">
-        <ul className="skills">
-          {skills.map((skill) => (
-            <li key={skill}>{skill}</li>
-          ))}
-        </ul>
-      </Section>
+      {volunteering && (
+        <Section title="Volunteering">
+          <ul className="list">
+            {volunteering.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </Section>
+      )}
     </main>
   )
 }
