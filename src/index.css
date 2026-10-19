@@ -179,6 +179,14 @@ h4 {
   margin: 0;
 }
 
+.footer {
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 @media (max-width: 600px) {
   .resume {
     padding-top: 24px;

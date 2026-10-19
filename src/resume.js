@@ -49,7 +49,7 @@ const resume = {
         },
         {
           heading: 'Infrastructure',
-          highlights: ['Developed workflows to automate regular dependency upgrades and hotfixes'],
+          highlights: ['Developed workflows to automate regular dependency upgrades and hotfixes.'],
         },
         {
           heading: 'Mentorship',
