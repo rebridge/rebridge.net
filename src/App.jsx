@@ -115,6 +115,10 @@ function App() {
           </ul>
         </Section>
       )}
+
+      <footer className="footer">
+        AI was used to <em>code</em> this website, not <em>write</em> its content.
+      </footer>
     </main>
   )
 }
