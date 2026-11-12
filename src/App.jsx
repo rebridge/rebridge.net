@@ -10,7 +10,7 @@ function Section({ title, children }) {
 }
 
 function App() {
-  const { name, title, pdf, summary, links, experience, education, skills, volunteering } = resume
+  const { name, title, pdf, summary, links, experience, projects, education, skills, volunteering } = resume
 
   return (
     <main className="resume">
@@ -69,6 +69,28 @@ function App() {
           </article>
         ))}
       </Section>
+
+      {projects && (
+        <Section title="Personal Projects">
+          {projects.map((project) => (
+            <article className="entry" key={project.name}>
+              <div className="entry-head">
+                <h3>
+                  {project.href ? (
+                    <a href={project.href} target="_blank" rel="noopener noreferrer">
+                      {project.name}
+                    </a>
+                  ) : (
+                    project.name
+                  )}
+                </h3>
+                {project.status && <span className="dates">{project.status}</span>}
+              </div>
+              <p>{project.description}</p>
+            </article>
+          ))}
+        </Section>
+      )}
 
       <Section title="Skills">
         <dl className="skills">

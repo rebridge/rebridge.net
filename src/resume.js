@@ -69,6 +69,25 @@ const resume = {
       ],
     },
   ],
+  projects: [
+    {
+      name: 'Calorie Tracker',
+      href: 'https://github.com/rebridge/calorie-tracker',
+      description:
+        'Self-hosted, phone-first calorie tracker: describe what you ate in plain English and Claude estimates calories and macros. Runs in Docker and is reached privately over Tailscale.',
+    },
+    {
+      name: 'Christmas Gift Dashboard',
+      description:
+        'Private, phone-first web app for tracking Christmas gifts, purchases, and budget, with secret gifts only the buyer can see. A single Docker container backed by SQLite, served over Tailscale.',
+    },
+    {
+      name: 'Home Gym',
+      href: 'https://github.com/rebridge/home-gym',
+      status: 'In initial development',
+      description: 'A new project for my home gym, just getting started.',
+    },
+  ],
   skills: [
     { category: 'Languages', items: 'TypeScript, React, Java, Go, Python' },
     { category: 'Infrastructure', items: 'Git, Docker, Kubernetes, GitHub Workflows/Actions, CI/CD' },
